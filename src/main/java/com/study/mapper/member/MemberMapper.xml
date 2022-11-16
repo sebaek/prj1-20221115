@@ -39,7 +39,7 @@
 	<update id="update">
 	UPDATE Member
 	SET
-		<if test="newPassword == true">
+		<if test="password != null">
 		password = #{password},
 		</if>
 		nickName = #{nickName},
