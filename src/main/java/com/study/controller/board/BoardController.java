@@ -139,6 +139,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("remove")
+	@PreAuthorize("@boardSecurity.checkWriter(authentication.name, #id)")
 	public String remove(int id, RedirectAttributes rttr) {
 		int cnt = service.remove(id);
 		
