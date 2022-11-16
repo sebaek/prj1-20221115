@@ -11,13 +11,16 @@
 
 <%-- authorize tag --%>
 <%-- spring security expressions, 책 673,674 --%>
+<%--
 <sec:authorize access="isAuthenticated()">
-	<h1>로그인됨!</h1>
+		<h1>로그인됨!</h1>
 </sec:authorize>
-
 <sec:authorize access="not isAuthenticated()">
 	<h1>로그인 안됨!</h1>
 </sec:authorize>
+ --%>
+
+<sec:authorize access="isAuthenticated()" var="loggedIn" />
 
 <c:url value="/board/list" var="listLink" />
 <c:url value="/board/register" var="registerLink" />
@@ -45,17 +48,21 @@
           <a class="nav-link ${active eq 'memberList' ? 'active' : '' }" href="${memberListLink }">회원목록</a>
         </li>
         
-        <li class="nav-item">
-          <a class="nav-link ${active eq 'signup' ? 'active' : '' }" href="${signupLink }">회원가입</a>
-        </li>
+        <c:if test="${not loggedIn }">
+	        <li class="nav-item">
+	          <a class="nav-link ${active eq 'signup' ? 'active' : '' }" href="${signupLink }">회원가입</a>
+	        </li>
+	        
+	        <li class="nav-item">
+	        	<a href="${loginLink }" class="nav-link">로그인</a>
+	        </li>
+        </c:if>        
         
-        <li class="nav-item">
-        	<a href="${loginLink }" class="nav-link">로그인</a>
-        </li>
-        
-        <li class="nav-item">
-        	<a href="${logoutLink }" class="nav-link">로그아웃</a>
-        </li>
+        <c:if test="${loggedIn }">
+	        <li class="nav-item">
+	        	<a href="${logoutLink }" class="nav-link">로그아웃</a>
+	        </li>
+        </c:if>
         
       </ul>
       <form action="${listLink }" class="d-flex" role="search">
