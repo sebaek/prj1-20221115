@@ -27,13 +27,13 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 	@GetMapping("login")
 	public void login() {
-		
+
 	}
 
 	@GetMapping("existNickName/{nickName}")
@@ -123,7 +123,8 @@ public class MemberController {
 		MemberDto oldmember = service.getById(member.getId());
 
 		rttr.addAttribute("id", member.getId());
-		if (oldmember.getPassword().equals(oldPassword)) {
+		boolean passwordMatch = passwordEncoder.matches(oldPassword, oldmember.getPassword());
+		if (passwordMatch) {
 			// 기존 암호가 맞으면 회원 정보 수정
 			int cnt = service.modify(member);
 
@@ -142,17 +143,18 @@ public class MemberController {
 	}
 
 	@PostMapping("remove")
-	public String remove(String id, String oldPassword, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
+	public String remove(String id, String oldPassword, RedirectAttributes rttr, HttpServletRequest request)
+			throws Exception {
 		MemberDto oldmember = service.getById(id);
 
 		boolean passwordMatch = passwordEncoder.matches(oldPassword, oldmember.getPassword());
-		
+
 		if (passwordMatch) {
 			service.remove(id);
 
 			rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
 			request.logout();
-			
+
 			return "redirect:/board/list";
 
 		} else {
