@@ -138,8 +138,10 @@ DESC Member;
 
 SELECT * FROM Member;
 
+SET SQL_SAFE_UPDATES = 1;
 
-
+DELETE FROM Member
+WHERE id <> 'abcd';
 
 
 
