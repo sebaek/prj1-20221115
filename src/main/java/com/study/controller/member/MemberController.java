@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@GetMapping("login")
 	public void login() {
@@ -138,13 +142,12 @@ public class MemberController {
 	public String remove(String id, String oldPassword, RedirectAttributes rttr) {
 		MemberDto oldmember = service.getById(id);
 
-		if (oldmember.getPassword().equals(oldPassword)) {
-			int cnt = service.remove(id);
-
+		boolean passwordMatch = passwordEncoder.matches(oldPassword, oldmember.getPassword());
+		
+		if (passwordMatch) {
 			rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
 
 			return "redirect:/board/list";
-
 		} else {
 			rttr.addAttribute("id", id);
 			rttr.addFlashAttribute("message", "암호가 일치하지 않습니다.");
