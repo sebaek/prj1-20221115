@@ -51,6 +51,7 @@ public class CustomConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.formLogin().loginPage("/member/login");
+		http.logout().logoutUrl("/member/logout");
 		http.csrf().disable();
 		
 		return http.build();
