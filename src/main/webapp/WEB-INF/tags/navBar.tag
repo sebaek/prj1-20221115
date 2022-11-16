@@ -40,13 +40,15 @@
         <li class="nav-item">
           <a class="nav-link ${active eq 'list' ? 'active' : '' }" href="${listLink }">목록</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link ${active eq 'register' ? 'active' : '' }" href="${registerLink }">작성</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link ${active eq 'memberList' ? 'active' : '' }" href="${memberListLink }">회원목록</a>
-        </li>
+        <c:if test="${loggedIn }">
+	        <li class="nav-item">
+	          <a class="nav-link ${active eq 'register' ? 'active' : '' }" href="${registerLink }">작성</a>
+	        </li>
+	        
+	        <li class="nav-item">
+	          <a class="nav-link ${active eq 'memberList' ? 'active' : '' }" href="${memberListLink }">회원목록</a>
+	        </li>
+        </c:if>
         
         <c:if test="${not loggedIn }">
 	        <li class="nav-item">
