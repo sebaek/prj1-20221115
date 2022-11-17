@@ -98,6 +98,7 @@
 		<result column="title" property="title"/>
 		<result column="writer" property="writer"></result>
 		<result column="content" property="content"/>
+		<result column="liked" property="liked"></result>
 		<result column="inserted" property="inserted"/>
 		<result column="countLike" property="countLike"></result>
 		<collection property="fileName" ofType="string">
