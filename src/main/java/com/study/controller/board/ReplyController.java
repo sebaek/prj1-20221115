@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -70,12 +71,10 @@ public class ReplyController {
 
 	@PostMapping("add")
 	@ResponseBody
+	@PreAuthorize("isAuthenticated()")
 	public Map<String, Object> add(@RequestBody ReplyDto reply, Authentication authentication) {
 //		System.out.println(reply);
-		
-		if (authentication != null) {
-			reply.setWriter(authentication.getName());
-		}
+		reply.setWriter(authentication.getName());
 		
 		Map<String, Object> map = new HashMap<>();
 		
