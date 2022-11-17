@@ -52,6 +52,7 @@ public class ReplyController {
 	
 	@DeleteMapping("remove/{id}")
 	@ResponseBody
+	@PreAuthorize("@replySecurity.checkWriter(authentication.name, #id)")
 	public Map<String, Object> remove(@PathVariable int id) {
 		Map<String, Object> map = new HashMap<>();
 		
