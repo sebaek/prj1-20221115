@@ -194,6 +194,17 @@ document.querySelector("#likeButton").addEventListener("click", function() {
 		},
 		body : JSON.stringify({boardId})
 	})
+	.then(res => res.json())
+	.then(data => {
+		
+		if (data.current == 'liked') {
+			document.querySelector("#likeButton").innerHTML = `<i class="fa-solid fa-thumbs-up"></i>`
+		} else {
+			document.querySelector("#likeButton").innerHTML = `<i class="fa-regular fa-thumbs-up"></i>`
+		}
+		
+		document.querySelector("#likeCount").innerText = data.count;
+	});
 });
 
 listReply();

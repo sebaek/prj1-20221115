@@ -120,6 +120,25 @@
 	WHERE id = #{id}
 	</delete>
 
+	<select id="getLikeByBoardIdAndMemberId" resultType="int">
+	SELECT COUNT(*) FROM BoardLike
+	WHERE boardId = #{boardId} AND memberId = #{memberId}
+	</select>
+	
+	<delete id="deleteLike">
+	DELETE FROM BoardLike
+	WHERE boardId = #{boardId} AND memberId = #{memberId}
+	</delete>
+	
+	<insert id="insertLike">
+	INSERT INTO BoardLike (boardId, memberId) 
+	VALUES (#{boardId}, #{memberId})
+	</insert>
+	
+	<select id="countLikeByBoardId" resultType="int">
+	SELECT COUNT(*) FROM BoardLike
+	WHERE boardId = #{boardId}
+	</select>
 </mapper>
 
 
