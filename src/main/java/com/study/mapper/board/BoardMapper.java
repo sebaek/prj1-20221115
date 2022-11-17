@@ -11,7 +11,7 @@ public interface BoardMapper {
 
 	List<BoardDto> list(int offset, int records, String type, String keyword);
 
-	BoardDto select(int id);
+	BoardDto select(int id, String username);
 
 	int update(BoardDto board);
 

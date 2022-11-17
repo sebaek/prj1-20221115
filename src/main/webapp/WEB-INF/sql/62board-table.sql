@@ -189,6 +189,21 @@ CREATE TABLE BoardLike (
 
 SELECT * FROM BoardLike;
 
+-- 좋아요 갯수, 좋아요 여부 포함된 게시물 조회
+SELECT
+		b.id,
+		b.title,
+		b.content,
+		b.writer,
+		b.inserted,
+		-- COUNT(distinct l.memberId) countLike,
+		f.id fileId,
+		f.name fileName
+	FROM
+		Board b LEFT JOIN File f ON b.id = f.boardId
+		        LEFT JOIN BoardLike l ON b.id = l.boardId
+	WHERE
+		b.id = 1064;
 
 
 

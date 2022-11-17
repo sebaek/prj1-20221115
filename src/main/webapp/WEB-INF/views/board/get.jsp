@@ -39,7 +39,14 @@
 					</h1>
 					<h1>
 						<span id="likeButton">
-							좋아요
+							
+							<c:if test="${board.liked }">
+								<i class="fa-solid fa-thumbs-up"></i>
+							</c:if>
+							<c:if test="${not board.liked }">
+								<i class="fa-regular fa-thumbs-up"></i>
+							</c:if>
+							
 						</span>
 						<span id="likeCount">
 							${board.countLike }
