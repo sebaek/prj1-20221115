@@ -196,12 +196,11 @@ SELECT
 		b.content,
 		b.writer,
 		b.inserted,
-		-- COUNT(distinct l.memberId) countLike,
+		(SELECT COUNT(*) FROM BoardLike WHERE boardId = b.id) countLike,
 		f.id fileId,
 		f.name fileName
 	FROM
 		Board b LEFT JOIN File f ON b.id = f.boardId
-		        LEFT JOIN BoardLike l ON b.id = l.boardId
 	WHERE
 		b.id = 1064;
 
