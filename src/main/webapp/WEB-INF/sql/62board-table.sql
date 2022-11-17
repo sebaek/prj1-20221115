@@ -177,4 +177,20 @@ SELECT
 	ORDER BY
 		id DESC
 
+;
+-- 좋아요 테이블 만들기
+CREATE TABLE BoardLike (
+	boardId INT,
+    memberId VARCHAR(255),
+    PRIMARY KEY (boardId, memberId),
+    FOREIGN KEY (boardId) REFERENCES Board(id),
+    FOREIGN KEY (memberId) REFERENCES Member(id)
+);
+
+
+
+
+
+
+
 
