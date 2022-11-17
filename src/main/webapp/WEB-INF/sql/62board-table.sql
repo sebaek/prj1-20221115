@@ -153,6 +153,10 @@ WHERE
 ALTER TABLE Board
 ADD FOREIGN KEY (writer) REFERENCES Member(id);
 
-
-
+-- 댓글 테이블에 작성자 추가
+ALTER TABLE Reply
+ADD COLUMN writer VARCHAR(255) NOT NULL DEFAULT 'aa' REFERENCES Member(id) AFTER content;
+ALTER TABLE Reply
+MODIFY COLUMN writer VARCHAR(255) NOT NULL;
+DESC Reply;
 
