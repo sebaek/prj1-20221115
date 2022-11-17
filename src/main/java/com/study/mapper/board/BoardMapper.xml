@@ -83,10 +83,12 @@
 		b.content,
 		b.writer,
 		b.inserted,
+		COUNT(l.memberId) countLike,
 		f.id fileId,
 		f.name fileName
 	FROM
 		Board b LEFT JOIN File f ON b.id = f.boardId
+		        LEFT JOIN BoardLike l ON b.id = l.boardId
 	WHERE
 		b.id = #{id}
 	</select>
@@ -97,6 +99,7 @@
 		<result column="writer" property="writer"></result>
 		<result column="content" property="content"/>
 		<result column="inserted" property="inserted"/>
+		<result column="countLike" property="countLike"></result>
 		<collection property="fileName" ofType="string">
 			<result property="fileName" column="fileName"/>
 		</collection>
