@@ -67,8 +67,14 @@ public class ReplyController {
 	
 	@GetMapping("list/{boardId}")
 	@ResponseBody
-	public List<ReplyDto> list(@PathVariable int boardId) {
-		return service.listReplyByBoardId(boardId);
+	public List<ReplyDto> list(@PathVariable int boardId, Authentication authentication) {
+		
+		String username = "";
+		if (authentication != null) {
+			username = authentication.getName();
+		}
+		
+		return service.listReplyByBoardId(boardId, username);
 	}
 
 	@PostMapping("add")

@@ -162,6 +162,19 @@ DESC Reply;
 
 SELECT * FROM Reply ORDER BY 1 DESC;
 
-
+-- 댓글이 수정 가능한 지 확인
+SELECT 
+		id,
+		boardId,
+		content,
+		writer,
+		(writer = 'bb') editable,
+		inserted
+	FROM
+		Reply
+	WHERE
+		boardId = 1064
+	ORDER BY
+		id DESC
 
 
