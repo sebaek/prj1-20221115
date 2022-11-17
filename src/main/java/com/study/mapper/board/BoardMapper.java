@@ -33,6 +33,9 @@ public interface BoardMapper {
 
 	int countLikeByBoardId(String boardId);
 
+	default BoardDto select(int id) {
+		return select(id, null);
+	}
 }
 
 

@@ -206,6 +206,11 @@ public class BoardSerivce {
 		
 		return map;
 	}
+
+	public BoardDto get(int id) {
+		// TODO Auto-generated method stub
+		return get(id, null);
+	}
 	
 }
 
