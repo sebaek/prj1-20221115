@@ -29,6 +29,7 @@ public class ReplyController {
 	
 	@PutMapping("modify")
 	@ResponseBody
+	@PreAuthorize("@replySecurity.checkWriter(authentication.name, #reply.id)")
 	public Map<String, Object> modify(@RequestBody ReplyDto reply) {
 		Map<String, Object> map = new HashMap<>();
 		

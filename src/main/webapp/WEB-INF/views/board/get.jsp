@@ -101,10 +101,10 @@
 		<div class="row">
 			<div class="col">
 			
+				<input type="hidden" id="boardId" value="${board.id }">
+					
 				<sec:authorize access="isAuthenticated()">
 					<%-- 댓글 작성 --%>
-					<input type="hidden" id="boardId" value="${board.id }">
-					
 					<div class="input-group">
 						<input type="text" class="form-control" id="replyInput1">
 						<button class="btn btn-outline-secondary" id="replySendButton1"><i class="fa-solid fa-reply"></i></button>

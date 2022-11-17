@@ -23,6 +23,7 @@
 		id,
 		boardId,
 		content,
+		writer,
 		inserted
 	FROM
 		Reply
@@ -41,6 +42,7 @@
 		id,
 		boardId,
 		content,
+		writer,
 		inserted
 	FROM
 		Reply
