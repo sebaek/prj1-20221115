@@ -16,7 +16,7 @@
 
 	<div class="container-md">
 		<div class="row justify-content-center">
-			<div class="col-5">
+			<div class="col-12 col-md-5">
 				<h1>로그인</h1>
 				<form method="post">
 				
