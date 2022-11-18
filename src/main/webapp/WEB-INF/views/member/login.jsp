@@ -22,7 +22,7 @@
 				
 					<div class="input-group mb-3">
 						<span class="input-group-text">
-							<i class="fa-solid fa-user"></i>
+							<i class="fa-solid fa-user fa-fw"></i>
 						</span>
 						<input type="text" name="username" class="form-control" placeholder="아이디">
 					
@@ -30,7 +30,7 @@
 					
 					<div class="input-group mb-3">
 						<span class="input-group-text">
-							<i class="fa-solid fa-key"></i>
+							<i class="fa-solid fa-key fa-fw"></i>
 						</span>
 						<input type="password" name="password" class="form-control" placeholder="암호">
 					</div>
