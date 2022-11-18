@@ -204,6 +204,27 @@ SELECT
 	WHERE
 		b.id = 1064;
 
+-- 권한테이블 만들기
+CREATE TABLE Authority (
+	memberId VARCHAR(255) NOT NULL REFERENCES Member(id),
+    auth VARCHAR(255) NOT NULL,
+    PRIMARY KEY (memberId, auth)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
