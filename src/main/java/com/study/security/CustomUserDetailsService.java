@@ -1,5 +1,6 @@
 package com.study.security;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 			return null;
 		}
 		
-		List<SimpleGrantedAuthority> authorityList = null;
+		List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
+		
+		if (member.getAuth() != null) {
+			for (String auth : member.getAuth()) {
+				authorityList.add(new SimpleGrantedAuthority(auth));
+			}
+		}
 		
 		User user = new User(member.getId(), member.getPassword(), authorityList);
 		
