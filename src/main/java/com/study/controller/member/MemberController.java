@@ -115,7 +115,7 @@ public class MemberController {
 	}
 
 	@GetMapping({ "info", "modify" })
-	@PreAuthorize("authentication.name == #id")
+	@PreAuthorize("hasAuthority('admin') or (authentication.name == #id)")
 	public void info(String id, Model model) {
 
 		model.addAttribute("member", service.getById(id));
